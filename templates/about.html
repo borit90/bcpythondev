@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}About Me - BC Python Developer{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <h1>About BC Python Developer</h1>
+            <p>Hi, I'm Barry, a passionate Python developer with experience in creating efficient, scalable, and user-friendly applications. My journey in programming started with a curiosity about how things work behind the scenes, and Python quickly became my language of choice due to its simplicity and power.</p>
+
+            <h3>My Expertise</h3>
+            <ul>
+                <li><strong>Web Development:</strong> Flask, Django, FastAPI</li>
+                <li><strong>Data Science:</strong> Pandas, NumPy, Matplotlib, Scikit-learn</li>
+                <li><strong>Automation:</strong> Scripting, web scraping, API integrations</li>
+            </ul>
+
+            <h3>My Philosophy</h3>
+            <p>I believe in writing clean, readable code that not only works but is maintainable and scalable. I'm committed to staying up-to-date with the latest technologies and best practices in the Python ecosystem.</p>
+
+            <p>When I'm not coding, you can find me contributing to open-source projects, furthering my knowledge with further learning and always looking at ways to better myself!</p>
+        </div>
+        <div class="col-lg-4">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BC Profile" class="img-fluid rounded-circle" style="max-width: 250px;">
+        </div>
+    </div>
+</div>
+{% endblock %}

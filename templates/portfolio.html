@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio - BC Python Developer{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-5">Portfolio</h1>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- <img src="{{ url_for('static', filename='images/project1.jpg') }}" class="card-img-top" alt="Project 1"> -->
+                <div class="card-body">
+                    <h5 class="card-title">E-commerce Platform</h5>
+                    <p class="card-text">A full-featured e-commerce website built with Django, featuring user authentication, payment integration, and inventory management.</p>
+                    <p class="text-muted">Technologies: Django, PostgreSQL, Stripe API, Bootstrap</p>
+                    <!-- <a href="#" class="btn btn-primary">View Project</a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- <img src="{{ url_for('static', filename='images/project2.jpg') }}" class="card-img-top" alt="Project 2"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Data Visualization Dashboard</h5>
+                    <p class="card-text">Interactive dashboard for visualizing sales data, built with Flask, Plotly, and Pandas for real-time data analysis.</p>
+                    <p class="text-muted">Technologies: Flask, Plotly, Pandas, SQLite</p>
+                    <!-- <a href="#" class="btn btn-primary">View Project</a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- <img src="{{ url_for('static', filename='images/project3.jpg') }}" class="card-img-top" alt="Project 3"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Web Scraping Tool</h5>
+                    <p class="card-text">Automated web scraping solution for collecting product data from multiple e-commerce sites using BeautifulSoup and Selenium.</p>
+                    <p class="text-muted">Technologies: Python, BeautifulSoup, Selenium, MongoDB</p>
+                    <!-- <a href="#" class="btn btn-primary">View Project</a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- <img src="{{ url_for('static', filename='images/project4.jpg') }}" class="card-img-top" alt="Project 4"> -->
+                <div class="card-body">
+                    <h5 class="card-title">REST API for IoT Devices</h5>
+                    <p class="card-text">Scalable REST API built with FastAPI for managing IoT device data, including real-time updates and authentication.</p>
+                    <p class="text-muted">Technologies: FastAPI, Redis, JWT, Docker</p>
+                    <!-- <a href="#" class="btn btn-primary">View Project</a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- <img src="{{ url_for('static', filename='images/project5.jpg') }}" class="card-img-top" alt="Project 5"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Machine Learning Model</h5>
+                    <p class="card-text">Predictive model for customer churn analysis using scikit-learn, with a web interface for uploading data and viewing results.</p>
+                    <p class="text-muted">Technologies: Scikit-learn, Flask, Pandas, Matplotlib</p>
+                    <!-- <a href="#" class="btn btn-primary">View Project</a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <!-- <img src="{{ url_for('static', filename='images/project6.jpg') }}" class="card-img-top" alt="Project 6"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Task Automation Suite</h5>
+                    <p class="card-text">Collection of Python scripts for automating business processes, including email processing, file organization, and report generation.</p>
+                    <p class="text-muted">Technologies: Python, smtplib, openpyxl, schedule</p>
+                    <!-- <a href="#" class="btn btn-primary">View Project</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

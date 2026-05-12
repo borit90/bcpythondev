@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Home - BC Python Developer{% endblock %}
+
+{% block content %}
+<div class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold">Welcome to BC Python Developer</h1>
+                <p class="lead">Expert Python development services for your business needs. From web applications to data analysis, we deliver high-quality solutions.</p>
+                <a href="/contact" class="btn btn-light btn-lg">Get Started</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Python Logo" class="img-fluid" style="max-width: 300px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h3>Web Development</h3>
+            <p>Build robust web applications using Flask, Django, and modern frameworks.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Data Analysis</h3>
+            <p>Transform your data into insights with Python's powerful data science libraries.</p>
+        </div>
+        <div class="col-md-4 text-center">
+            <h3>Automation</h3>
+            <p>Streamline your workflows with custom Python scripts and automation tools.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Contact - BC Python Developer{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Contact Me</h1>
+            <p>Ready to start your Python project? Get in touch and let's discuss how I can help bring your ideas to life.</p>
+
+            <div class="mb-4">
+                <h5>Get In Touch</h5>
+                <p><strong>Email:</strong> bcpythondev@gmail.com</p>
+                <p><strong>Phone:</strong> +44 7818 215 725 </p>
+                <p><strong>Location:</strong> Essex co13</p>
+            </div>
+
+            <div>
+                <h5>Follow Me</h5>
+                <a href="#" class="me-3"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/barry-c-0a6876406/?skipRedirect=true" class="me-3"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://x.com/BarryCalver" class="me-3"><i class="fab fa-twitter"></i> Twitter</a>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} mt-3" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
+{% endblock %}
