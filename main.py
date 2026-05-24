@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, request, flash
 from flask_mail import Mail, Message
 
+
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-change-in-production')
 
@@ -13,7 +14,16 @@ app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
+
 mail = Mail(app)
+
+def is_mail_configured():
+    """Return True if required mail env vars are present."""
+    return all([
+        app.config.get('MAIL_USERNAME'),
+        app.config.get('MAIL_PASSWORD'),
+        app.config.get('MAIL_DEFAULT_SENDER'),
+    ])
 
 @app.route('/')
 def home():
@@ -38,12 +48,22 @@ def contact():
         email = request.form['email']
         message = request.form['message']
        
-        msg = Message('New Contact Form Message',
-                      recipients=['bcpythondev@gmail.com'])
-        msg.body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-        mail.send(msg)
-        
-        flash('Thank you for your message! We will get back to you soon.', 'success')
+        subject = 'New Contact Form Message'
+        body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+
+        # Send mail only when properly configured; handle errors gracefully
+        if not is_mail_configured():
+            app.logger.warning('Mail settings are not configured; skipping send.')
+            flash('Mail service is not configured. Your message was not sent. Please contact via email directly.', 'danger')
+        else:
+            try:
+                msg = Message(subject, recipients=['bcpythondev@gmail.com'])
+                msg.body = body
+                mail.send(msg)
+                flash('Thank you for your message! We will get back to you soon.', 'success')
+            except Exception:
+                app.logger.exception('Failed to send contact form email')
+                flash('An error occurred while sending your message. Please try again later.', 'danger')
     return render_template('contact.html')
 
 if __name__ == '__main__':
