@@ -1,4 +1,5 @@
 import os
+import threading
 from flask import Flask, render_template, request, flash
 from flask_mail import Mail, Message
 
@@ -16,6 +17,14 @@ app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
 
 mail = Mail(app)
+
+def send_email_async(msg):
+    """Send a Flask-Mail message in a background thread."""
+    with app.app_context():
+        try:
+            mail.send(msg)
+        except Exception:
+            app.logger.exception('Failed to send contact form email (async)')
 
 def is_mail_configured():
     """Return True if required mail env vars are present."""
@@ -59,7 +68,9 @@ def contact():
             try:
                 msg = Message(subject, recipients=['bcpythondev@gmail.com'])
                 msg.body = body
-                mail.send(msg)
+                thread = threading.Thread(target=send_email_async, args=(msg,))
+                thread.daemon = True
+                thread.start()
                 flash('Thank you for your message! We will get back to you soon.', 'success')
             except Exception:
                 app.logger.exception('Failed to send contact form email')
